@@ -12,10 +12,17 @@ def set_idx(df: pd.DataFrame, idx_col: str) -> pd.DataFrame: # в качеств
 #         med = df[col].median()
 #         df[col].fillna(med, inplace=True)
 #     return df
-        
+def work_with_NA(df: pd.DataFrame) -> pd.DataFrame:
+    columns_with_NA = df.loc[:, df.isnull().any()].columns
+    df[columns_with_NA].fillna( "-1", inplace=True)
+    return df
 
 def cast_types(df: pd.DataFrame) -> pd.DataFrame: # каст типов
     df[cfg.CAT_COLS] = df[cfg.CAT_COLS].astype('category')
+    for col in cfg.ONE_COLS:
+        for row in df.index:
+            if pd.isna(df[col][row]):
+                df[col][row] = -1
     df[cfg.ONE_COLS] = df[cfg.ONE_COLS].astype(np.int32)
     df[cfg.REAL_COLS] = df[cfg.REAL_COLS].astype(np.float32)
     if cfg.TARGET_COLS in df.columns: # если таргет есть в переданном DataFrame, то и их тоже кастим
@@ -25,6 +32,7 @@ def cast_types(df: pd.DataFrame) -> pd.DataFrame: # каст типов
 
 def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     df = set_idx(df, cfg.ID_COL)
+    df = work_with_NA(df)
     df = cast_types(df)
     return df
 

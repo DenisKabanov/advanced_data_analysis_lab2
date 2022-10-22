@@ -1,6 +1,6 @@
 ID_COL = "Id"
 
-TARGET_COL = "SalePrice"
+TARGET_COLS = "SalePrice"
 CAT_COLS = ['MSZoning', 'Street', 'Alley', 'LotShape', 'LandContour', 'Utilities',
        'LotConfig', 'LandSlope', 'Neighborhood', 'Condition1', 'Condition2',
        'BldgType', 'HouseStyle', 'RoofStyle', 'RoofMatl', 'Exterior1st',
@@ -19,6 +19,6 @@ ONE_COLS = ['MSSubClass', 'LotArea', 'OverallQual', 'OverallCond',
        'GarageArea', 'WoodDeckSF', 'OpenPorchSF', 'EnclosedPorch', '3SsnPorch',
        'ScreenPorch', 'PoolArea', 'MiscVal', 'MoSold', 'YrSold']
 
-NEW_COLS = []
+NEW_COLS = ['House size', 'How good is the house']
 
 RS = 7

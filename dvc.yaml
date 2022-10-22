@@ -9,3 +9,13 @@ stages:
     - data/interim/val_data.pkl
     - data/processed/train_target.pkl
     - data/processed/val_target.pkl
+  build_features:
+    cmd: python src/features/build_features.py data/interim/ data/processed/
+    deps:
+    - data/interim/test_data.pkl
+    - data/interim/train_data.pkl
+    - data/interim/val_data.pkl
+    outs:
+    - data/processed/test_data.pkl
+    - data/processed/train_data.pkl
+    - data/processed/val_data.pkl

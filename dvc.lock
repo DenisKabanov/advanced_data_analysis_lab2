@@ -9,17 +9,39 @@ stages:
       nfiles: 4
     outs:
     - path: data/interim/test_data.pkl
-      md5: a240f3a51d9c49d2776d1382cfd26a01
-      size: 630257
+      md5: 7c5ef60bd5a27d2322a138b46d854e6f
+      size: 294157
     - path: data/interim/train_data.pkl
-      md5: b7ebcd7f9c79eea1a1b28136e4bdf112
-      size: 505070
+      md5: 243034ee82ef317d7b1988ad637f1c9e
+      size: 237477
     - path: data/interim/val_data.pkl
-      md5: fbd2441aad1dc63fbca79be42e776c38
-      size: 125264
+      md5: 9dda7a99f2ee7870ddfee14b63fbe26b
+      size: 66648
     - path: data/processed/train_target.pkl
       md5: 7eebbca859f994b3fe38bd5915c09f45
       size: 24055
     - path: data/processed/val_target.pkl
       md5: 2ff1b106b25b942d1fe64aa45aa88f7a
       size: 6535
+  build_features:
+    cmd: python src/features/build_features.py data/interim/ data/processed/
+    deps:
+    - path: data/interim/test_data.pkl
+      md5: 7c5ef60bd5a27d2322a138b46d854e6f
+      size: 294157
+    - path: data/interim/train_data.pkl
+      md5: 243034ee82ef317d7b1988ad637f1c9e
+      size: 237477
+    - path: data/interim/val_data.pkl
+      md5: 9dda7a99f2ee7870ddfee14b63fbe26b
+      size: 66648
+    outs:
+    - path: data/processed/test_data.pkl
+      md5: 4231e59eb992f0dca35931ef75127abe
+      size: 297245
+    - path: data/processed/train_data.pkl
+      md5: 65c98e1463dcd439c9f5459502b84f12
+      size: 239983
+    - path: data/processed/val_data.pkl
+      md5: 357d68fbb56877586b759253cfff17f7
+      size: 67402
