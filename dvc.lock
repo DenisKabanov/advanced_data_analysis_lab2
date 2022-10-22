@@ -1,0 +1,25 @@
+schema: '2.0'
+stages:
+  preprocess_data:
+    cmd: python src/data/make_dataset.py data/raw/ data/interim/ data/processed/
+    deps:
+    - path: data/raw/
+      md5: 9bc65218030bc62fc7de89bf8ba83a7a.dir
+      size: 928895
+      nfiles: 4
+    outs:
+    - path: data/interim/test_data.pkl
+      md5: a240f3a51d9c49d2776d1382cfd26a01
+      size: 630257
+    - path: data/interim/train_data.pkl
+      md5: b7ebcd7f9c79eea1a1b28136e4bdf112
+      size: 505070
+    - path: data/interim/val_data.pkl
+      md5: fbd2441aad1dc63fbca79be42e776c38
+      size: 125264
+    - path: data/processed/train_target.pkl
+      md5: 7eebbca859f994b3fe38bd5915c09f45
+      size: 24055
+    - path: data/processed/val_target.pkl
+      md5: 2ff1b106b25b942d1fe64aa45aa88f7a
+      size: 6535
