@@ -1,0 +1,11 @@
+stages:
+  preprocess_data:
+    cmd: python src/data/make_dataset.py data/raw/ data/interim/ data/processed/
+    deps:
+    - data/raw/
+    outs:
+    - data/interim/test_data.pkl
+    - data/interim/train_data.pkl
+    - data/interim/val_data.pkl
+    - data/processed/train_target.pkl
+    - data/processed/val_target.pkl
