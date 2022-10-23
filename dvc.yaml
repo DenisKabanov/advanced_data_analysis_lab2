@@ -28,7 +28,7 @@ stages:
     outs:
     - models/model_fit.pkl
     - models/transformer.pkl
-  prdict:
+  predict:
     cmd: python src/models/predict_model.py data/processed/ models/ results/
     deps:
     - data/processed/test_data.pkl
@@ -38,3 +38,11 @@ stages:
     outs:
     - results/test_target_predicted.pkl
     - results/val_target_predicted.pkl
+  evaluate:
+    cmd: python src/models/evaluate.py results/val_target_predicted.pkl data/processed/val_target.pkl
+      results/
+    deps:
+    - data/processed/val_target.pkl
+    - results/val_target_predicted.pkl
+    outs:
+    - results/metrics.txt
