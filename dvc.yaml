@@ -19,3 +19,12 @@ stages:
     - data/processed/test_data.pkl
     - data/processed/train_data.pkl
     - data/processed/val_data.pkl
+  train_model:
+    cmd: python src/models/train_model.py data/processed/train_data.pkl data/processed/train_target.pkl
+      models/
+    deps:
+    - data/processed/train_data.pkl
+    - data/processed/train_target.pkl
+    outs:
+    - models/model_fit.pkl
+    - models/transformer.pkl

@@ -7,11 +7,6 @@ def set_idx(df: pd.DataFrame, idx_col: str) -> pd.DataFrame: # в качеств
         df.set_index(idx_col, inplace=True)
     return df
 
-# def fill_other_missed_values(df: pd.DataFrame) -> pd.DataFrame: # помимо одного пропущенного значения 'Пол', в данных имеется 534 пропуска в 'Возраст курения', 546 в 'Сигарет в день', 732 в 'Частота пасс кур', 167 в 'Возраст алког'
-#     for col in cfg.MANY_MISSING_DATA_COLS: # заполним пропуски медианой
-#         med = df[col].median()
-#         df[col].fillna(med, inplace=True)
-#     return df
 def work_with_NA(df: pd.DataFrame) -> pd.DataFrame:
     columns_with_NA = df.loc[:, df.isnull().any()].columns
     df[columns_with_NA].fillna( "-1", inplace=True)
@@ -19,12 +14,12 @@ def work_with_NA(df: pd.DataFrame) -> pd.DataFrame:
 
 def cast_types(df: pd.DataFrame) -> pd.DataFrame: # каст типов
     df[cfg.CAT_COLS] = df[cfg.CAT_COLS].astype('category')
-    for col in cfg.ONE_COLS:
+    for col in cfg.INT_COLS:
         for row in df.index:
             if pd.isna(df[col][row]):
                 df[col][row] = -1
-    df[cfg.ONE_COLS] = df[cfg.ONE_COLS].astype(np.int32)
-    df[cfg.REAL_COLS] = df[cfg.REAL_COLS].astype(np.float32)
+    df[cfg.INT_COLS] = df[cfg.INT_COLS].astype(np.int32)
+    df[cfg.FLOAT_COLS] = df[cfg.FLOAT_COLS].astype(np.float32)
     if cfg.TARGET_COLS in df.columns: # если таргет есть в переданном DataFrame, то и их тоже кастим
         df[cfg.TARGET_COLS] = df[cfg.TARGET_COLS].astype(np.int32)
     return df

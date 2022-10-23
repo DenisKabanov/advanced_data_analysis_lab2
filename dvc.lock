@@ -45,3 +45,20 @@ stages:
     - path: data/processed/val_data.pkl
       md5: 357d68fbb56877586b759253cfff17f7
       size: 67402
+  train_model:
+    cmd: python src/models/train_model.py data/processed/train_data.pkl data/processed/train_target.pkl
+      models/
+    deps:
+    - path: data/processed/train_data.pkl
+      md5: 65c98e1463dcd439c9f5459502b84f12
+      size: 239983
+    - path: data/processed/train_target.pkl
+      md5: 7eebbca859f994b3fe38bd5915c09f45
+      size: 24055
+    outs:
+    - path: models/model_fit.pkl
+      md5: b94cb6ff2879da5346613f4da0051586
+      size: 1098687
+    - path: models/transformer.pkl
+      md5: 0454210d603a178096ccaf4c29eb3133
+      size: 9032

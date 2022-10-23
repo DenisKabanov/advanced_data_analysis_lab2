@@ -10,8 +10,8 @@ CAT_COLS = ['MSZoning', 'Street', 'Alley', 'LotShape', 'LandContour', 'Utilities
        'Functional', 'FireplaceQu', 'GarageType', 'GarageFinish', 'GarageQual',
        'GarageCond', 'PavedDrive', 'PoolQC', 'Fence', 'MiscFeature',
        'SaleType', 'SaleCondition']
-REAL_COLS = ['LotFrontage', 'MasVnrArea', 'GarageYrBlt']
-ONE_COLS = ['MSSubClass', 'LotArea', 'OverallQual', 'OverallCond',
+FLOAT_COLS = ['LotFrontage', 'MasVnrArea', 'GarageYrBlt']
+INT_COLS = ['MSSubClass', 'LotArea', 'OverallQual', 'OverallCond', # столбцы, в которых значение имеют тип int
        'YearBuilt', 'YearRemodAdd', 'BsmtFinSF1', 'BsmtFinSF2', 'BsmtUnfSF',
        'TotalBsmtSF', '1stFlrSF', '2ndFlrSF', 'LowQualFinSF', 'GrLivArea',
        'BsmtFullBath', 'BsmtHalfBath', 'FullBath', 'HalfBath', 'BedroomAbvGr',
