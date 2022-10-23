@@ -28,3 +28,13 @@ stages:
     outs:
     - models/model_fit.pkl
     - models/transformer.pkl
+  prdict:
+    cmd: python src/models/predict_model.py data/processed/ models/ results/
+    deps:
+    - data/processed/test_data.pkl
+    - data/processed/val_data.pkl
+    - models/model_fit.pkl
+    - models/transformer.pkl
+    outs:
+    - results/test_target_predicted.pkl
+    - results/val_target_predicted.pkl
