@@ -44,5 +44,3 @@ stages:
     deps:
     - data/processed/val_target.pkl
     - results/val_target_predicted.pkl
-    outs:
-    - results/metrics.txt
